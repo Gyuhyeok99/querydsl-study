@@ -6,6 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import study.querydsl.entity.Member;
 import study.querydsl.entity.Team;
 
@@ -26,6 +27,8 @@ public class InitMember {
 
         @PersistenceContext
         EntityManager em;
+
+        @Transactional
         public void init() {
 
             Team teamA = new Team("teamA");
