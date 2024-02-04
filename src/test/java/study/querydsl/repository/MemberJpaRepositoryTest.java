@@ -35,4 +35,19 @@ class MemberJpaRepositoryTest {
         List<Member> result2 = memberJpaRepository.findByUsername("member1");
         assertEquals(result2.size(), 1);
     }
+
+    @Test
+    public void basicQuerydslTest() {
+        Member member = new Member("member1", 10);
+        memberJpaRepository.save(member);
+
+        Member findMember = memberJpaRepository.findById(member.getId()).get();
+        assertEquals(findMember, member);
+
+        List<Member> result1 = memberJpaRepository.findAll_Querydsl();
+        assertEquals(result1.size(), 1);
+
+        List<Member> result2 = memberJpaRepository.findByUsername_Querydsl("member1");
+        assertEquals(result2.size(), 1);
+    }
 }
